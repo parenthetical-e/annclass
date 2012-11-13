@@ -11,7 +11,7 @@ def print_perceptron_update(xs, ws, bias, y):
     # Convert xs ans ws to the proper form
     # for use in perceptron
     xs, ws = setup_bias(xs, ws, bias)
-    ws_new, h = perceptron_update(xs, ws, y)
+    ws_new, h_new = perceptron_update(xs, ws, y)
 
     print("ws_intial: {0}\nws_new: {1}".format(ws, ws_new))
 
@@ -25,8 +25,9 @@ def print_linear_update(xs, ws, bias, y, ep):
     ws = np.array(ws) 
         # Not using setup_bias so do this by hand.
     
-    ws_new, h = linear_update(xs, ws, y, ep)
-    h_new = linear(xs, ws_new, None)
+    h = linear(xs, ws, None) ## The inital hypothesis
+    
+    ws_new, h_new = linear_update(xs, ws, y, ep)
     
     print("ws_intial: {0}\nws_new: {1}".format(ws, ws_new))
     print("h_intial: {0}\nh_new: {1}".format(h,h_new))
@@ -52,7 +53,7 @@ if __name__ == "__main__":
 
     # ----
     # Lecture 3.1 quiz:
-    print("----\nLecture 3.1 quiz:\n----")
+    print("\n----\nLecture 3.1 quiz:\n----")
     xs = [2, 5, 3]
     ws = [50, 50, 50]
     bias = None
